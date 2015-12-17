@@ -30,3 +30,23 @@ Question.create(
     }
   ]
 )
+Option.create(
+  [
+    {
+      text:"Pisa",
+      question_id:1
+    },
+    {
+      text:"Ostia",
+      question_id:1
+    },
+    {
+      text:"Barium",
+      question_id:1
+    },
+    {
+      text:"Brundisium",
+      question_id:1
+    }
+  ]
+)

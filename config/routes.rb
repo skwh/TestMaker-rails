@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :options, except: [:index, :show]
+
   resources :questions
 
   resources :exams

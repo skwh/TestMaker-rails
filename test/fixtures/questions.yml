@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyString
-  type: 
-  level: 
-  test_id: 
+  body: MyString
+  topic: MyString
+  level: MyString
+  exam_id: 1
 
 two:
-  text: MyString
-  type: 
-  level: 
-  test_id: 
+  body: MyString
+  topic: MyString
+  level: MyString
+  exam_id: 1

@@ -1,11 +1,13 @@
+<p id="notice"><%= notice %></p>
+
 <p>
-  <strong>Text:</strong>
-  <%= @question.text %>
+  <strong>Body:</strong>
+  <%= @question.body %>
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @question.type %>
+  <strong>Topic:</strong>
+  <%= @question.topic %>
 </p>
 
 <p>
@@ -14,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Test:</strong>
-  <%= @question.test_id %>
+  <strong>Exam:</strong>
+  <%= @question.exam_id %>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |

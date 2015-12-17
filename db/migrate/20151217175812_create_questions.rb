@@ -1,10 +1,10 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.string :text
-      t.integer :type
+      t.string :body
+      t.string :topic
       t.integer :level
-      t.integer :test_id
+      t.integer :exam_id
 
       t.timestamps
     end

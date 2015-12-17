@@ -2,6 +2,10 @@
 
 one:
   title: MyString
+  level: MyString
+  topic: MyString
 
 two:
   title: MyString
+  level: MyString
+  topic: MyString

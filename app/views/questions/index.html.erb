@@ -3,10 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th>Text</th>
-      <th>Type</th>
+      <th>Body</th>
+      <th>Topic</th>
       <th>Level</th>
-      <th>Test</th>
+      <th>Exam</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,10 +14,10 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.text %></td>
-        <td><%= question.type %></td>
+        <td><%= question.body %></td>
+        <td><%= question.topic %></td>
         <td><%= question.level %></td>
-        <td><%= question.test_id %></td>
+        <td><%= question.exam_id %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
         <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -50,3 +50,13 @@ Option.create(
     }
   ]
 )
+Topic.create(
+  [
+    {
+      name:"Geography"
+    },
+    {
+      name:"Poetry"
+    }
+  ]
+)

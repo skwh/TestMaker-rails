@@ -15,5 +15,14 @@
   <%= @exam.topic %>
 </p>
 
+<strong>Questions</strong>
+<% @exam.questions.each do |q| %>
+<p><%= q.body %><br />
+  <% q.options.each do |o| %>
+    <%= o.text %>
+  <% end %>
+</p>
+<% end %>
+
 <%= link_to 'Edit', edit_exam_path(@exam) %> |
 <%= link_to 'Back', exams_path %>

@@ -1,5 +1,5 @@
 class ExamsController < ApplicationController
-  before_action :set_exam, only: [:show, :edit, :update, :destroy]
+  before_action :set_exam, only: [:show, :edit, :update, :destroy, :populate]
 
   # GET /exams
   # GET /exams.json
@@ -25,7 +25,7 @@ class ExamsController < ApplicationController
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
-
+    populate
     respond_to do |format|
       if @exam.save
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
@@ -33,6 +33,18 @@ class ExamsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @exam.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def populate
+    if (@exam.level == 0)
+      Question.where(topic:@exam.topic).each do |q|
+        @exam.questions.push(q)
+      end
+    else
+      Question.where(level:@exam.level,topic:@exam.topic).each do |q|
+        @exam.questions.push(q)
       end
     end
   end

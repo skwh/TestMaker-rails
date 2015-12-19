@@ -16,13 +16,17 @@
 </p>
 
 <strong>Questions</strong>
+<ol>
 <% @exam.questions.each do |q| %>
-<p><%= q.body %><br />
+  <li>
+  <%= q.body %><br />
+  <ul>
   <% q.options.each do |o| %>
-    <%= o.text %>
+    <li><%= o.text %></li>
   <% end %>
-</p>
+  </ul>
+  </li>
 <% end %>
-
+</ol>
 <%= link_to 'Edit', edit_exam_path(@exam) %> |
 <%= link_to 'Back', exams_path %>

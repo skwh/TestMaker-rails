@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :level %><br>
-    <%= f.text_field :level %>
+    <%= f.select(:level, options_for_select([1,2,3,4,5,['none',0]],@exam.level)) %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :topic %><br>
     <%= f.collection_select(:topic, Topic.all, :name, :name) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create", {class:"btn btn-default"} %>
   </div>
 <% end %>

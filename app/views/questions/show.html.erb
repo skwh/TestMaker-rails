@@ -1,30 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @question.body %>
-</p>
-
-<p>
-  <strong>Topic:</strong>
-  <%= @question.topic %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @question.level %>
-</p>
-
-<p>
-  <strong>Exam:</strong>
-  <%= @question.exam_id %>
-</p>
-
+<h2>
+  Question (id #<%= @question.id %>)
+  <span class="right-align">
+    <%= link_to "Edit", edit_question_path(@question), {class:"btn btn-primary",role:"button"} %>
+  </span>
+</h2>
 <p>
   <strong>Options:</strong>
   <% @question.options.each do |o| %>
     <p><%= o.text %></p>
-  <% end %> 
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |

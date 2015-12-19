@@ -1,9 +1,55 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @topic.name %>
-</p>
+  <span class="right-align">
+    <%= link_to "Edit", edit_topic_path(@topic), {class:"btn btn-primary",role:"button"} %>
+  </span>
+</h1>
+<h4>Questions with this topic:</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th>Topic</th>
+      <th>Level</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= link_to question.body, question %></td>
+        <td><%= question.topic %></td>
+        <td><%= question.level %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr />
+<h4>Exams with this topic:</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Topic</th>
+      <th>Level</th>
+      <th>Number of Questions</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exams.each do |exam| %>
+      <tr>
+        <td><%= link_to exam.title, exam %></td>
+        <td><%= exam.topic %></td>
+        <td><%= exam.level %></td>
+        <td><%= exam.question_number %></td>
+        <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
+        <td><%= link_to 'Delete', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

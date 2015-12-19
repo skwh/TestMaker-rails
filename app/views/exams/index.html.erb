@@ -1,5 +1,9 @@
-<h1>Listing exams</h1>
-
+<h2>
+  Exams (<%= @exams.count %> total)
+  <span class="right-align">
+    <%= link_to "+", new_exam_path, {class:"btn btn-success",role:"button"} %>
+  </span>
+</h2>
 <table class="table">
   <thead>
     <tr>
@@ -23,7 +27,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Exam', new_exam_path %>

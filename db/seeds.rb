@@ -11,12 +11,14 @@ Exam.create(
     {
       title:"Geography",
       level:0,
-      topic:"Geography"
+      topic:"Geography",
+      question_number:10
     },
     {
       title:"Poetry",
       level:5,
-      topic:"Poetry"
+      topic:"Poetry",
+      question_number:10
     }
   ]
 )

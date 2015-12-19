@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :topics
 
-  resources :options, except: [:index, :show]
+  resources :options, except: [:index, :show, :edit]
 
   resources :questions
 

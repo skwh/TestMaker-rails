@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217185629) do
+ActiveRecord::Schema.define(version: 20151219000553) do
 
   create_table "exams", force: true do |t|
     t.string   "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151217185629) do
     t.string   "topic"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "question_number"
   end
 
   create_table "options", force: true do |t|

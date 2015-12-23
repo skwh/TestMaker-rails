@@ -1,28 +1,27 @@
-<h2>
+<h1>
   Exams (<%= @exams.count %> total)
   <span class="right-align">
     <%= link_to "+", new_exam_path, {class:"btn btn-success",role:"button"} %>
   </span>
-</h2>
+</h1>
 <table class="table">
   <thead>
     <tr>
       <th>Title</th>
       <th>Level</th>
       <th>Topic</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @exams.each do |exam| %>
       <tr>
-        <td><%= exam.title %></td>
+        <td><%= link_to exam.title, exam %></td>
         <td><%= exam.level %></td>
         <td><%= exam.topic %></td>
-        <td><%= link_to 'Show', exam %></td>
         <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
-        <td><%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -15,6 +15,7 @@ class ExamsController < ApplicationController
   # GET /exams/new
   def new
     @exam = Exam.new
+    @exam.question.build
   end
 
   # GET /exams/1/edit
@@ -82,6 +83,6 @@ class ExamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exam_params
-      params.require(:exam).permit(:title, :level, :topic)
+      params.require(:exam).permit(:title, :level, :topic, questions_attributes:[:body, :topic, :level, :exam_id, :id, :_destroy, options_attributes: [:id, :_destroy, :text, :question_id]])
     end
 end

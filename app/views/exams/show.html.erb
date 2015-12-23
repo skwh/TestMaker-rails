@@ -1,32 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @exam.title %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @exam.level %>
-</p>
-
-<p>
-  <strong>Topic:</strong>
-  <%= @exam.topic %>
-</p>
-
-<strong>Questions</strong>
-<ol>
-<% @exam.questions.each do |q| %>
-  <li>
-  <%= q.body %><br />
-  <ul>
-  <% q.options.each do |o| %>
-    <li><%= o.text %></li>
+<%= content_tag "div", class:"page-header" do %>
+  <%= content_tag "h1" do %>
+    <%= @exam.title %>
+    <%= content_tag "small", class:"" do %>
+      Level: <%= @exam.level %> -
+      Topic: <%= @exam.topic %> -
+      <%= link_to "Edit", edit_exam_path(@exam) %>
+    <% end %>
   <% end %>
-  </ul>
-  </li>
 <% end %>
-</ol>
-<%= link_to 'Edit', edit_exam_path(@exam) %> |
-<%= link_to 'Back', exams_path %>
+
+<%= content_tag "h3" do %>
+  Questions
+<% end %>
+<div class="exam-body">
+  <ol>
+    <% @exam.questions.each do |q| %>
+      <li class="h4">
+        <%= q.body %><br />
+        <ol type="a">
+          <% q.options.each do |o| %>
+            <li class="h5"><%= o.text %></li>
+          <% end %>
+        </ol>
+      </li>
+    <% end %>
+  </ol>
+</div>

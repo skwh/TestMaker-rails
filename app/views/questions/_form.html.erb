@@ -1,4 +1,4 @@
-<%= nested_form_for(@question) do |f| %>
+<%= nested_form_for @question do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -21,11 +21,23 @@
   </div>
   <div class="field form-group">
     <%= f.label :level %><br>
-    <%= f.text_field :level, class:"form-control" %>
+    <%= f.select(:level, options_for_select([1,2,3,4,5,['none',0]],@question.level)) %>
   </div>
   <div class="field form-group">
     <%= f.label :exam_id %><br>
     <%= f.collection_select(:exam_id, Exam.all, :id, :title) %>
+  </div>
+  <div class="field form-group">
+    <h3> Options - <%= f.link_to_add "Add Option", :options, class:"add", data:{target:"#options"} %></h3>
+    <ol type="a" id="options">
+      <%= f.fields_for :options do |a| %>
+        <li>
+        <%= a.text_field :text %>
+        <%= a.hidden_field :question_id, value:@question.id %>
+        <%= a.link_to_remove "Remove" %>
+        </li>
+      <% end %>
+    </ol>
   </div>
   <div class="actions">
     <%= f.submit class:"btn btn-success" %>

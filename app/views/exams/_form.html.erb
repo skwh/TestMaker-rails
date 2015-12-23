@@ -1,4 +1,4 @@
-<%= form_for @exam do |f| %>
+<%= nested_form_for @exam do |f| %>
   <% if @exam.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@exam.errors.count, "error") %> prohibited this exam from being saved:</h2>
@@ -16,16 +16,44 @@
     <%= f.text_field :title, class:"form-control" %>
   </div>
   <div class="field form-group">
-    <%= f.label :question_number, "Number of Questions" %>
-    <%= f.text_field :question_number, class:"form-control" %>
-  </div>
-  <div class="field form-group">
     <%= f.label :level %><br>
     <%= f.select(:level, options_for_select([1,2,3,4,5,['none',0]],@exam.level)) %>
   </div>
   <div class="field form-group">
     <%= f.label :topic %><br>
     <%= f.collection_select(:topic, Topic.all, :name, :name) %>
+  </div>
+  <div class="field form-group">
+    <h3>Questions
+      <%= content_tag "span", class:"right-align" do %>
+        <%= f.link_to_add "+", :questions, class:"add btn btn-success", role:"button", data:{target:"#questions"} %>
+      <% end %>
+    </h3>
+    <%= content_tag :ol, {id:"quesions"} do %>
+      <%= f.fields_for :questions do |a| %>
+        <li>
+          <div class="field form-group">
+            <%= a.label :body, "Question:" %><br>
+            <%= a.text_field :body, class:"form-control" %>
+          </div>
+          <div class="field form-group">
+            <%= a.link_to_add "+", :options, class:"add right-align btn btn-sm btn-success", data:{target:"#options_#{a.index}"} %>
+            <%= content_tag :ol, {type:"a",id:"options_#{a.index}"} do %>
+              <%= a.fields_for :options do |b| %>
+                <li>
+                <%= b.text_field :text %>
+                <%= b.hidden_field :question_id, value:a.object.id %>
+                <%= b.link_to_remove "Remove", class:"btn btn-xs btn-danger" %>
+                </li>
+              <% end %>
+            <% end %>
+          </div>
+          <%= a.hidden_field :topic, value:@exam.topic %>
+          <%= a.hidden_field :level, value:@exam.level %>
+          <%= a.hidden_field :exam_id, value:@exam.id %>
+      </li>
+      <% end %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit class:"btn btn-success" %>

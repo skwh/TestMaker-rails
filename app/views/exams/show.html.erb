@@ -16,7 +16,7 @@
   <ol>
     <% @exam.questions.each do |q| %>
       <li class="h4">
-        <%= q.body %><br />
+        <%= q.formatted_body.html_safe %><br />
         <ol type="a">
           <% q.options.each do |o| %>
             <li class="h5"><%= o.text %></li>

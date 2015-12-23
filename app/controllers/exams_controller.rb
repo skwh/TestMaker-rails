@@ -15,7 +15,8 @@ class ExamsController < ApplicationController
   # GET /exams/new
   def new
     @exam = Exam.new
-    @exam.question.build
+    @exam.questions.build
+    @exam.questions.first.options.build
   end
 
   # GET /exams/1/edit

@@ -25,9 +25,7 @@
   </div>
   <div class="field form-group">
     <h3>Questions
-      <%= content_tag "span", class:"right-align" do %>
-        <%= f.link_to_add "+", :questions, class:"add btn btn-success", role:"button", data:{target:"#questions"} %>
-      <% end %>
+      <%= f.link_to_add "+", :questions, class:"add btn btn-success right-align", data:{target:"#questions"} %>
     </h3>
     <%= content_tag :ol, {id:"quesions"} do %>
       <%= f.fields_for :questions do |a| %>

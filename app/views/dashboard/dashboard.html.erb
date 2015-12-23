@@ -1,0 +1,64 @@
+<h2>
+  Exams (<%= @e_count %> total)
+  <span class="right-align">
+    <%= link_to "+", new_exam_path, {class:"btn btn-success",role:"button"} %>
+  </span>
+</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Topic</th>
+      <th>Level</th>
+      <th>Number of Questions</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exams.each do |exam| %>
+      <tr>
+        <td><%= link_to exam.title, exam %></td>
+        <td><%= exam.topic %></td>
+        <td><%= exam.level %></td>
+        <td><%= exam.question_number %></td>
+        <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
+        <td><%= link_to 'Delete', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>
+  Questions (<%= @q_count %>)
+  <span class="right-align">
+    <%= link_to "+", new_question_path, {class:"btn btn-success",role:"button"} %>
+  </span>
+</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th>Topic</th>
+      <th>Level</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= link_to question.body, question %></td>
+        <td><%= question.topic %></td>
+        <td><%= question.level %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td class="text-centered" colspan="5"><%= link_to "#{@q_count - 5} more...", questions_path %></td>
+    </tr>
+  </tbody>
+</table>
